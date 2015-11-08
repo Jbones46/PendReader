@@ -9,6 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var tempLbl: UILabel!
+    
+    @IBOutlet weak var windLbl: UILabel!
+    @IBOutlet weak var pressureLbl: UILabel!
+    @IBOutlet weak var periodSegment: UISegmentedControl!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
