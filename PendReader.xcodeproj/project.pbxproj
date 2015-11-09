@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26400B38DA5A4F2ABA8AFDC9 /* Pods_PendReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68F49A50104FAE2810E6D5F /* Pods_PendReader.framework */; };
 		D03DE96C1BEFF1C60078FE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DE96B1BEFF1C60078FE8B /* AppDelegate.swift */; };
 		D03DE96E1BEFF1C60078FE8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DE96D1BEFF1C60078FE8B /* ViewController.swift */; };
 		D03DE9711BEFF1C60078FE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03DE96F1BEFF1C60078FE8B /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7157BDB96EB34F4F9755B525 /* Pods-PendReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PendReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PendReader/Pods-PendReader.debug.xcconfig"; sourceTree = "<group>"; };
+		A8BC7240CC4E5DB4ACBA1AE0 /* Pods-PendReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PendReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-PendReader/Pods-PendReader.release.xcconfig"; sourceTree = "<group>"; };
+		C68F49A50104FAE2810E6D5F /* Pods_PendReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PendReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03DE9681BEFF1C60078FE8B /* PendReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PendReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03DE96B1BEFF1C60078FE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03DE96D1BEFF1C60078FE8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26400B38DA5A4F2ABA8AFDC9 /* Pods_PendReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1709D8E2D833725D30056F8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7157BDB96EB34F4F9755B525 /* Pods-PendReader.debug.xcconfig */,
+				A8BC7240CC4E5DB4ACBA1AE0 /* Pods-PendReader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A210E6E1A30B4AD521064A30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C68F49A50104FAE2810E6D5F /* Pods_PendReader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D03DE95F1BEFF1C60078FE8B = {
 			isa = PBXGroup;
 			children = (
 				D03DE96A1BEFF1C60078FE8B /* PendReader */,
 				D03DE9691BEFF1C60078FE8B /* Products */,
+				1709D8E2D833725D30056F8A /* Pods */,
+				A210E6E1A30B4AD521064A30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D03DE97A1BEFF1C60078FE8B /* Build configuration list for PBXNativeTarget "PendReader" */;
 			buildPhases = (
+				B71CC7918E520D8252BA8202 /* Check Pods Manifest.lock */,
 				D03DE9641BEFF1C60078FE8B /* Sources */,
 				D03DE9651BEFF1C60078FE8B /* Frameworks */,
 				D03DE9661BEFF1C60078FE8B /* Resources */,
+				9BDFD429383326372658AD99 /* Embed Pods Frameworks */,
+				253BBAE450D697E4B5C1E9E6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		253BBAE450D697E4B5C1E9E6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PendReader/Pods-PendReader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BDFD429383326372658AD99 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PendReader/Pods-PendReader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B71CC7918E520D8252BA8202 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D03DE9641BEFF1C60078FE8B /* Sources */ = {
@@ -246,6 +321,7 @@
 		};
 		D03DE97B1BEFF1C60078FE8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7157BDB96EB34F4F9755B525 /* Pods-PendReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PendReader/Info.plist;
@@ -257,6 +333,7 @@
 		};
 		D03DE97C1BEFF1C60078FE8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8BC7240CC4E5DB4ACBA1AE0 /* Pods-PendReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PendReader/Info.plist;
@@ -285,6 +362,7 @@
 				D03DE97C1BEFF1C60078FE8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

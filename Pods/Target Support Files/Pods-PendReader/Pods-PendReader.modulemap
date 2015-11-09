@@ -1,0 +1,6 @@
+framework module Pods_PendReader {
+  umbrella header "Pods-PendReader-umbrella.h"
+
+  export *
+  module * { export * }
+}
