@@ -15,6 +15,9 @@ let baseUrl = "https://weatherdataapp.firebaseio.com"
 class ViewController: UIViewController {
     
     @IBOutlet weak var tempLbl: UILabel!
+    @IBOutlet weak var medianTempLbl: UILabel!
+    @IBOutlet weak var medianWindLbl: UILabel!
+    @IBOutlet weak var medianPressureLbl: UILabel!
     
     @IBOutlet weak var windLbl: UILabel!
     @IBOutlet weak var pressureLbl: UILabel!
@@ -24,8 +27,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       //queryFirebase()
+      
        
-        testData()
+       findMean()
+        var test = datePicker.date
+        print(test)
+        
+       // print("DmySNap = \(mySnap)")
+
         let calendar = NSCalendar.currentCalendar()
         
         datePicker.datePickerMode = UIDatePickerMode.Date
@@ -74,24 +84,109 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    let sample = "2012-01-01 08:00:00 +0000"
+    let url = "https://weatherdataapp.firebaseio.com/Data/Mean"
+    let url2 = "https://weatherdataapp.firebaseio.com/Data/Median"
 
-    func testData() {
-        let sample = "2012-01-01 08:00:00 +0000"
-        let url = "https://weatherdataapp.firebaseio.com/Data/Mean"
-        let ref = Firebase(url: url)
-        ref.observeEventType(.Value, withBlock: { snapshot in
+var mySnap: FDataSnapshot?
+    var mySnap2: FDataSnapshot?
+    func findMean() {
+        
+        var mySnapArray = [FDataSnapshot]()
+                let ref = Firebase(url: url)
+                let ref2 = Firebase(url: url2)
+     let mySpef = ref.observeEventType(.Value, withBlock: { snapshot in
             
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
-                for snap in snapshots{
-                    print(snap)} }
+                func snappers() -> FDataSnapshot {
+                for snap in snapshots {
+                    if self.mySnap == nil {
+                        self.mySnap = snap.childSnapshotForPath(self.sample)}
+                    
+                   // print(self.mySnap)
+                
+//                    mySnapArray.append(snap)
+//                     print(mySnapArray)
+                }
+                print(self.mySnap)
+            return self.mySnap!
+                }
+            let dSnap = snappers()
+              //  print("snappers = \(dSnap)")
+                
+             // print("Temp: \(dSnap.valueForKey("Temp"))")
+               // print("Temp: \(dSnap.valueForKeyPath("Temp"))")
+                
+                let bSnap = dSnap.valueInExportFormat() as! [String: Double]
+                let temp = bSnap["Temp"]
+                let baro = bSnap["Barometric"]
+                let windSpeed = bSnap["WindSpeed"]
+                print(bSnap["Temp"])
+                print(bSnap["Barometric"])
+                self.tempLbl.text = String(format: "%.2f", temp!) + " / "
+                self.pressureLbl.text = String(format: "%.2f", baro!) + " / "
+                self.windLbl.text = String(format: "%.2f", windSpeed!) + " / "
+                
+                
+                //print(bSnap)
+                self.mySnap = dSnap
+            
+            }
+            
+            
             }, withCancelBlock: { error in
                 print(error.description)
         })
-        //print(myTest)
+       
+        let mySpef2 = ref2.observeEventType(.Value, withBlock: { snapshot2 in
+            
+            if let snapshots2 = snapshot2.children.allObjects as? [FDataSnapshot] {
+                func snappers2() -> FDataSnapshot {
+                    for snap2 in snapshots2 {
+                        if self.mySnap2 == nil {
+                            self.mySnap2 = snap2.childSnapshotForPath(self.sample)}
+                        
+                        // print(self.mySnap)
+                        
+                        //                    mySnapArray.append(snap)
+                        //                     print(mySnapArray)
+                    }
+                    print(self.mySnap2)
+                    return self.mySnap2!
+                }
+                let dSnap2 = snappers2()
+                //  print("snappers = \(dSnap)")
+                
+                // print("Temp: \(dSnap.valueForKey("Temp"))")
+                // print("Temp: \(dSnap.valueForKeyPath("Temp"))")
+                
+                let bSnap2 = dSnap2.valueInExportFormat() as! [String: Double]
+                print(bSnap2)
+                let temp2 = bSnap2["Temp"]
+                let baro2 = bSnap2["Barometric"]
+                let windSpeed2 = bSnap2["WindSpeed"]
+                print(bSnap2["Temp"])
+                print(bSnap2["Barometric"])
+                self.medianTempLbl.text = String(format: "%.2f", temp2!)
+                self.medianPressureLbl.text = String(format: "%.2f", baro2!)
+                self.medianWindLbl.text = String(format: "%.2f", windSpeed2!)
+                
+                
+                //print(bSnap)
+                self.mySnap2 = dSnap2
+                
+            }
+            
+            
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
         
         
         
     }
-
-}
+    
+    
+    
+ }
 
